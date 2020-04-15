@@ -19,15 +19,15 @@ zena(jana).
 zena(linda).
 zena(eva).
 
-otec(tomas,jan).
-otec(jan,robert).
-otec(jan,jana).
-otec(pavel,linda).
-otec(pavel,eva).
+otec(tomas, jan).
+otec(jan, robert).
+otec(jan, jana).
+otec(pavel, linda).
+otec(pavel, eva).
 
-matka(marie,robert).
-matka(linda,jana).
-matka(eva,petr).
+matka(marie, robert).
+matka(linda, jana).
+matka(eva, petr).
 
 % Implementujte nasledujici predikaty:
 rodic(X, Y) :- matka(X, Y); otec(X, Y).

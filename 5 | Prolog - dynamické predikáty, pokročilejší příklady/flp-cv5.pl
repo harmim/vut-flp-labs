@@ -5,19 +5,19 @@ obsazeno(P) :- robot(_, P); dira(P).
 vytvor(I, P) :- not(obsazeno(P)), assert(robot(I, P)).
 vytvor(P) :- not(obsazeno(P)), assert(dira(P)).
 
-odstran(P) :- dira(P), retract(dira(P));robot(I, P), retract(robot(I, P)).
+odstran(P) :- dira(P), retract(dira(P)); robot(I, P), retract(robot(I, P)).
 
 obsazene_pozice(X) :- bagof(P, obsazeno(P), X).
 obsazene_roboty(X) :- bagof(P, I^robot(I, P), X).
 
-inkrementuj(X,Y) :- Y is X+1.
-dekrementuj(X,Y) :- Y is X-1.
+inkrementuj(X, Y) :- Y is X + 1.
+dekrementuj(X, Y) :- Y is X - 1.
 doleva(I) :- pohni(I, dekrementuj).
 doprava(I) :- pohni(I, inkrementuj).
 pohni(I, Operace) :-
-  retract(robot(I,P)), call(Operace,P,Pn),
+  retract(robot(I, P)), call(Operace, P, Pn),
   (obsazeno(Pn) ->
-    (robot(_,Pn) -> odstran(Pn) ; true)
+    (robot(_, Pn) -> odstran(Pn) ; true)
   ;
     assert(robot(I,Pn))
   ).
@@ -58,12 +58,12 @@ addOneToAll(E, [L|LS], [[E|L]|T]) :- addOneToAll(E, LS, T).
 
 
 signum(Num, Sig) :-
-  Num==0 -> (
+  Num == 0 -> (
     Sig = 0
   ) ; (
-    Num>0 -> Sig = 1 ; Sig = -1
+    Num > 0 -> Sig = 1 ; Sig = -1
   ).
 
 signum2(0, 0).
-signum2(N, -1) :- N<0.
-signum2(N, 1) :- N>0.
+signum2(N, -1) :- N < 0.
+signum2(N, 1) :- N > 0.
